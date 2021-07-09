@@ -1,15 +1,12 @@
-import Head from 'next/head'
+import Layout from '../components/Layout';
 
 const HomePage = () => {
   return (
-    <div>
-      <Head>
-        <title>DJ Events</title>
-        <meta name='description' content='Welcome to DJ Events'/>
-      </Head>
-
-      <h1>Home</h1>
-    </div>
+    <>
+      <Layout>
+        <h1>Home</h1>
+      </Layout>
+    </>
   );
 };
 
