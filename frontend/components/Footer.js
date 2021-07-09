@@ -1,4 +1,4 @@
-import Link from 'next/dist/client/link';
+import Link from 'next/link';
 import styles from '../styles/Footer.module.css';
 const Footer = () => {
   return (
