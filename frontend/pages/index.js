@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Layout from '@/components/Layout';
 import EventItem from '@/components/EventItem';
 // with aliases explicitly need to say `/index`
@@ -13,6 +14,12 @@ const HomePage = ({ events }) => {
           events.map(evt => <EventItem key={evt.id} evt={evt} />)
         ) : (
           <h3>No events to show</h3>
+        )}
+
+        {events.length && (
+          <Link href='/events'>
+            <a className='btn-secondary'>View all Events</a>
+          </Link>
         )}
       </Layout>
     </>
@@ -39,7 +46,7 @@ export async function getStaticProps() {
   const events = await res.json();
 
   return {
-    props: { events },
+    props: { events: events.slice(0, 3) },
     // An optional amount in seconds after which a page re-generation can occur (defaults to: false or no revalidating)
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
