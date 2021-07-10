@@ -4,7 +4,7 @@ import EventItem from '@/components/EventItem';
 import { API_URL } from '@/config/index';
 
 const Events = ({ events }) => {
-  console.log(events);
+  // console.log(events);
   return (
     <>
       <Layout>
