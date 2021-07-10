@@ -15,12 +15,29 @@ const HomePage = ({ events }) => {
 
 export default HomePage;
 
-// `getServerSideProps` Runs server side (everytime the page is loaded)
-export async function getServerSideProps() {
+/*
+ * `getStaticProps` Runs at build time to generate a static page (by default only once),
+ * that will be displayed on every request
+ * so that the page does not have to fetch data everytime on page load
+ * but if there is some update in data (that API is fetching, then it will not be reflected back)
+ * since this will be generated at build time
+ * so, we use `revalidate`
+ * So that It may be called again, on a serverless function, if
+ * revalidation is enabled and a new request comes in
+ * See
+ *   https://github.com/vercel/next.js/discussions/11427#discussioncomment-2227
+ *   https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+ */
+export async function getStaticProps() {
   const res = await fetch(`${API_URL}/api/events`);
   const events = await res.json();
 
   return {
     props: { events },
+    // An optional amount in seconds after which a page re-generation can occur (defaults to: false or no revalidating)
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 1,
   };
 }
