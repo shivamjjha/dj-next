@@ -42,11 +42,13 @@ export default HomePage;
  *   https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
  */
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/events`);
+  // coming from strapy
+  const res = await fetch(`${API_URL}/events?_sort=date:ASC&_limit=3`);
   const events = await res.json();
+  // console.log(events[0].image.formats);
 
   return {
-    props: { events: events.slice(0, 3) },
+    props: { events },
     // An optional amount in seconds after which a page re-generation can occur (defaults to: false or no revalidating)
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
