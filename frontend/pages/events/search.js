@@ -1,4 +1,6 @@
 import qs from 'qs';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Layout from '@/components/Layout';
 import EventItem from '@/components/EventItem';
 // with aliases explicitly need to say `/index`
@@ -6,10 +8,12 @@ import { API_URL } from '@/config/index';
 
 const SearchPage = ({ events }) => {
   // console.log(events);
+  const router = useRouter();
   return (
     <>
-      <Layout>
-        <h1>Events</h1>
+      <Layout title={`Search Results for ${router.query.term}`}>
+        <Link href='/events'>Go back</Link>
+        <h1>Search Results for {router.query.term}</h1>
         {events && events.length > 0 ? (
           events.map(evt => <EventItem key={evt.id} evt={evt} />)
         ) : (
