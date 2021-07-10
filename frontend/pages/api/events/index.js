@@ -1,5 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+const { events } = require('./data.json');
 
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+  if (req.method === 'GET') {
+    res.status(200).json(events);
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).json({ message: `${req.method} is not allowed` });
+  }
 }
