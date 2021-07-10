@@ -15,7 +15,7 @@ const EventItem = ({ evt }) => {
       </div>
       <div className={styles.info}>
         <span>
-          {evt.date} at {evt.time}
+          {new Date(evt.date).toLocaleDateString()} at {evt.time}
         </span>
         <h3>{evt.name}</h3>
       </div>
