@@ -5,7 +5,7 @@ import EventItem from '@/components/EventItem';
 import { API_URL } from '@/config/index';
 
 const HomePage = ({ events }) => {
-  console.log(events);
+  // console.log(events);
   return (
     <>
       <Layout>
