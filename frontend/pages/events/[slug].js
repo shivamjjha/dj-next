@@ -2,8 +2,16 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
 
-const Event = ({ evt }) => {
+const EventPage = ({ evt }) => {
   const router = useRouter();
+
+  // If the dynamic page is not yet generated (the path was not there) (at build time), this will be displayed
+  // initially until getStaticProps() finishes running
+  // For subsequent visits to this page, everyone who requests the same page will get the statically pre-rendered page.
+  // See https://nextjs.org/docs/basic-features/data-fetching#fallback-pages
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <Layout>
       <h1>{evt.name}</h1>
@@ -11,7 +19,7 @@ const Event = ({ evt }) => {
   );
 };
 
-export default Event;
+export default EventPage;
 
 /* at build time we cannot just pass dynamic slug routes as `{ query: { slug } }`,
  * because in case of getStaticProps(),  the web pages needs to be generated statically at build time
