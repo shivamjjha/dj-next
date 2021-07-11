@@ -61,18 +61,18 @@ const EventPage = ({ evt }) => {
               width={960}
               height={600}
             />
-            <h3>Performers:</h3>
-            <p>{evt.performers}</p>
-            <h3>Description:</h3>
-            <p>{evt.description}</p>
-            <h3>Venue: {evt.name}</h3>
-            <p>{evt.address}</p>
-
-            <Link href='/events'>
-              <a className={styles.back}>{'<'} Go Back</a>
-            </Link>
           </div>
         )}
+        <h3>Performers:</h3>
+        <p>{evt.performers}</p>
+        <h3>Description:</h3>
+        <p>{evt.description}</p>
+        <h3>Venue: {evt.name}</h3>
+        <p>{evt.address}</p>
+
+        <Link href='/events'>
+          <a className={styles.back}>{'<'} Go Back</a>
+        </Link>
       </div>
     </Layout>
   );
