@@ -45,6 +45,21 @@ export const AuthProvider = ({ children }) => {
   // Logout User
   const logout = async user => {
     console.log('Logout');
+    const res = await fetch(`${NEXT_URL}/api/logout`, {
+      method: 'POST',
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (!res.ok) {
+      setError('Something went wrong, please try again later');
+      return;
+    }
+
+    setError(null); 
+    setUser(null);
+    router.push('/');
   };
 
   // Check if user is logged in
