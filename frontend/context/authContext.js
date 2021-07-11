@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   // Register User
+  
   const register = async ({ username, email, password }) => {
     console.log({ username, email, password });
   };
