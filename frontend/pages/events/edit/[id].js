@@ -40,9 +40,8 @@ const EditEventPage = ({ evt }) => {
       toast.error('Please fill in all fields');
       return;
     }
-
-    const res = await fetch(`${API_URL}/events`, {
-      method: 'POST',
+    const res = await fetch(`${API_URL}/events/${evt.id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -54,11 +53,8 @@ const EditEventPage = ({ evt }) => {
       return;
     }
 
-    const evt = await res.json();
-
-    console.log(evt);
-
-    router.push(`/events/${evt.slug}`);
+    const returnedEvent = await res.json();
+    router.push(`/events/${returnedEvent.slug}`);
   };
 
   const handleInputChange = e => {
