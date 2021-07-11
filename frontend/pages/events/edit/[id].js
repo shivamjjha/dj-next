@@ -9,6 +9,7 @@ import Layout from '@/components/Layout';
 import styles from '@/styles/Form.module.css';
 import { FaImage } from 'react-icons/fa';
 import Modal from '@/components/Modal';
+import ImageUpload from '@/components/ImageUpload';
 
 function convertDate(str) {
   // You can parse the date using the Date constructor, then spit out the individual time components:
@@ -69,6 +70,10 @@ const EditEventPage = ({ evt }) => {
   const handleInputChange = e => {
     setValues(v => ({ ...v, [e.target.name]: e.target.value }));
   };
+
+  const ImageUploaded = () => {
+    console.log('ImageUploaded');
+  }
 
   return (
     <>
@@ -172,7 +177,7 @@ const EditEventPage = ({ evt }) => {
         </div>
 
         <Modal show={showModal} onClose={() => setShowModal(false)}>
-          IMAGE UPLOAD
+          <ImageUpload evtId={evt.id} ImageUploaded={ImageUploaded}/>
         </Modal>
       </Layout>
     </>
