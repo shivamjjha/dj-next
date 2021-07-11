@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Layout from '@/components/Layout';
 import { FaUser } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '@/styles/AuthForm.module.css';
 import Link from 'next/link';
+import AuthContext from '@/context/authContext';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const { register, error } = useContext(AuthContext);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const RegisterPage = () => {
       return;
     }
 
-    console.log({ username, email, password });
+    register({ username, email, password });
   };
   return (
     <Layout title='User Registration'>
@@ -80,8 +83,8 @@ const RegisterPage = () => {
             />
           </div>
 
-          <button type='submit' className='btn'>
-            LogIn
+          <button type='submit' className='btn' onSubmit={handleSubmit}>
+            Register
           </button>
         </form>
 

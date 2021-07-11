@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   // Register User
   const register = async ({ username, email, password }) => {
-    console.log();
+    console.log({ username, email, password });
   };
 
   // Login User
