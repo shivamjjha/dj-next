@@ -3,11 +3,18 @@ import Image from 'next/image';
 import styles from '@/styles/EventItem.module.css';
 
 const EventItem = ({ evt }) => {
+  const src =
+    evt &&
+    evt.image &&
+    evt.image.formats &&
+    evt.image.formats.thumbnail &&
+    evt.image.formats.thumbnail.url;
+    
   return (
     <div className={styles.event}>
       <div className={styles.image}>
         <Image
-          src={ evt.image.formats.thumbnail.url || '/images/event-default.png'}
+          src={src || '/images/event-default.png'}
           width={170}
           height={100}
           alt='Event Image'
