@@ -71,9 +71,13 @@ const EditEventPage = ({ evt }) => {
     setValues(v => ({ ...v, [e.target.name]: e.target.value }));
   };
 
-  const ImageUploaded = () => {
-    console.log('ImageUploaded');
-  }
+  const imageUploaded = async e => {
+    const res = await fetch(`${API_URL}/events/${evt.id}`);
+    const data = await res.json();
+
+    setImagePreview(data.image.formats.thumbnail.url);
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -177,7 +181,7 @@ const EditEventPage = ({ evt }) => {
         </div>
 
         <Modal show={showModal} onClose={() => setShowModal(false)}>
-          <ImageUpload evtId={evt.id} ImageUploaded={ImageUploaded}/>
+          <ImageUpload evtId={evt.id} imageUploaded={imageUploaded} />
         </Modal>
       </Layout>
     </>
