@@ -50,10 +50,7 @@ const Add = () => {
 
     console.log(evt);
 
-    const t = setTimeout(() => {
-      router.push(`/events/${evt.slug}`);
-      clearTimeout(t);
-    }, 5000);
+    router.push(`/events/${evt.slug}`);
   };
 
   const handleInputChange = e => {
