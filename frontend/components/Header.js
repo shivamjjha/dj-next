@@ -35,6 +35,11 @@ const Header = () => {
                 </Link>
               </li>
               <li>
+                <Link href='/account/dashboard'>
+                  <a>Dashboard</a>
+                </Link>
+              </li>
+              <li>
                 <button className='btn-secondary btn-icon' onClick={logout}>
                   <FaSignOutAlt /> Logout
                 </button>
