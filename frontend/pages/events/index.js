@@ -3,17 +3,11 @@ import Layout from '@/components/Layout';
 import EventItem from '@/components/EventItem';
 // with aliases explicitly need to say `/index`
 import { API_URL } from '@/config/index';
-const PER_PAGE = 2;
+import Pagination from '@/components/Pagination';
+const PER_PAGE = 5;
 
-const Events = ({ events }) => {
-  // console.log(events);
+const Events = ({ events, page, total }) => {
   const router = useRouter();
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
@@ -24,6 +18,8 @@ const Events = ({ events }) => {
         ) : (
           <h3>No events to show</h3>
         )}
+
+        <Pagination page={page} total={total} PER_PAGE={PER_PAGE} />
       </Layout>
     </>
   );
@@ -35,12 +31,17 @@ export async function getServerSideProps({ query: { page = 1 } }) {
   // Calculate start page
   const start = +page === 1 ? 0 : (+page - 1) * PER_PAGE;
 
-  const res = await fetch(
+  // Fetch total
+  const totalRes = await fetch(`${API_URL}/events/count`);
+  const total = await totalRes.json();
+
+  // Fetch events
+  const eventRes = await fetch(
     `${API_URL}/events?_sort=date:ASC&_limit=${PER_PAGE}&_start=${start}`
   );
-  const events = await res.json();
+  const events = await eventRes.json();
 
   return {
-    props: { events },
+    props: { events, page: +page, total },
   };
 }
