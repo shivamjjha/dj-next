@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { PER_PAGE } from '../config';
 
-const Pagination = ({ total, page, PER_PAGE }) => {
+const Pagination = ({ total, page }) => {
   const lastPage = Math.ceil(total / PER_PAGE);
 
   return (

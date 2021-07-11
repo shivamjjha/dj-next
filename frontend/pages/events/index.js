@@ -2,9 +2,8 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import EventItem from '@/components/EventItem';
 // with aliases explicitly need to say `/index`
-import { API_URL } from '@/config/index';
+import { API_URL, PER_PAGE } from '@/config/index';
 import Pagination from '@/components/Pagination';
-const PER_PAGE = 5;
 
 const Events = ({ events, page, total }) => {
   const router = useRouter();
@@ -19,7 +18,7 @@ const Events = ({ events, page, total }) => {
           <h3>No events to show</h3>
         )}
 
-        <Pagination page={page} total={total} PER_PAGE={PER_PAGE} />
+        <Pagination page={page} total={total} />
       </Layout>
     </>
   );
