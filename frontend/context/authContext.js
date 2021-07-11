@@ -1,11 +1,14 @@
+import { useRouter } from 'next/router';
 import { createContext, useEffect, useState } from 'react';
-import { API_URL, NEXT_URL } from '../config';
+import { API_URL, NEXT_URL } from '@/config/index';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  const router = useRouter();
 
   useEffect(() => checkUserLoggedIn(), []);
 
@@ -56,6 +59,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     setUser(data.user);
+    router.push('/account/dashboard');
   };
 
   return (
