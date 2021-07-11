@@ -24,24 +24,29 @@ const LoginPage = () => {
         <ToastContainer />
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor='email'>Email Address</label>
-          <input
-            type='email'
-            name='email'
-            id='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
+          <div>
+            <label htmlFor='email'>Email Address</label>
+            <input
+              type='email'
+              name='email'
+              id='email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
 
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            id='password'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
+          <div>
+            <label htmlFor='password'>Password</label>
+            <input
+              type='password'
+              name='password'
+              id='password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
 
+          <div></div>
           <button type='submit' className='btn'>
             LogIn
           </button>
