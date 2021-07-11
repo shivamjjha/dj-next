@@ -1,11 +1,13 @@
-import { createContext, useState } from 'react';
-import { NEXT_URL } from '../config';
+import { createContext, useEffect, useState } from 'react';
+import { API_URL, NEXT_URL } from '../config';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  useEffect(() => checkUserLoggedIn(), []);
 
   // Register User
   const register = async ({ username, email, password }) => {
@@ -45,6 +47,15 @@ export const AuthProvider = ({ children }) => {
   // Check if user is logged in
   const checkUserLoggedIn = async () => {
     console.log('check');
+    const res = await fetch(`${NEXT_URL}/api/user`);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setUser(null);
+      return;
+    }
+
+    setUser(data.user);
   };
 
   return (
