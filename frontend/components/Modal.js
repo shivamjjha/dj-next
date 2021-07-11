@@ -11,7 +11,10 @@ const Modal = ({ show, onClose, children, title }) => {
     setIsBroswer(true);
   }, []);
 
-  const handleClose = () => {};
+  const handleClose = e => {
+    e.preventDefault();
+    onClose();
+  };
 
   const modalContent = show && (
     <div className={styles.overlay}>
@@ -34,6 +37,9 @@ const Modal = ({ show, onClose, children, title }) => {
       document.querySelector('#modal-root')
     );
   }
+
+  // important to return anything (to render nothing, return null.)
+  return null;
 };
 
 export default Modal;
