@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
@@ -9,7 +11,22 @@ import styles from '@/styles/Event.module.css';
 const EventPage = ({ evt }) => {
   const router = useRouter();
 
-  const deleteEvent = () => console.log('delete event');
+  const deleteEvent = async () => {
+    if (confirm('Are you sure?')) {
+      const res = await fetch(`${API_URL}/events/${evt.id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message);
+        return;
+      }
+
+      router.push('/events');
+    }
+  };
 
   // If the dynamic page is not yet generated (the path was not there) (at build time), this will be displayed
   // initially until getStaticProps() finishes running
@@ -35,9 +52,15 @@ const EventPage = ({ evt }) => {
           {new Date(evt.date).toLocaleDateString()} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
+        <ToastContainer />
         {evt.image && (
           <div className={styles.image}>
-            <Image src={evt.image.formats.medium.url} alt={evt.name} width={960} height={600} />
+            <Image
+              src={evt.image.formats.medium.url}
+              alt={evt.name}
+              width={960}
+              height={600}
+            />
             <h3>Performers:</h3>
             <p>{evt.performers}</p>
             <h3>Description:</h3>
