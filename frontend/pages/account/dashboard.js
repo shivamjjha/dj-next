@@ -3,10 +3,28 @@ import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
 import parseCookie from '@/helpers/index';
 import styles from '@/styles/Dashboard.module.css';
+import router from 'next/router';
 
-const DashboardPage = ({ events }) => {
-  const deleteEvent = id => {
-    console.log(id);
+const DashboardPage = ({ events, token }) => {
+  const deleteEvent = async id => {
+    if (confirm('Are you sure?')) {
+      const res = await fetch(`${API_URL}/events/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message);
+        return;
+      }
+
+      // router.push('/events');
+      router.reload();
+    }
   };
 
   return (
@@ -38,6 +56,6 @@ export const getServerSideProps = async ({ req }) => {
   const events = await res.json();
 
   return {
-    props: { events },
+    props: { events, token },
   };
 };
