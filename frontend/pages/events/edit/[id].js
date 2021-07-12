@@ -10,6 +10,7 @@ import styles from '@/styles/Form.module.css';
 import { FaImage } from 'react-icons/fa';
 import Modal from '@/components/Modal';
 import ImageUpload from '@/components/ImageUpload';
+import parseCookie from '@/helpers/index';
 
 function convertDate(str) {
   // You can parse the date using the Date constructor, then spit out the individual time components:
@@ -19,7 +20,7 @@ function convertDate(str) {
   return [date.getFullYear(), mnth, day].join('-');
 }
 
-const EditEventPage = ({ evt }) => {
+const EditEventPage = ({ evt, token }) => {
   const [values, setValues] = useState({
     name: evt.name,
     performers: evt.performers,
@@ -54,11 +55,16 @@ const EditEventPage = ({ evt }) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+      if (res.status === 401 || res.status === 403) {
+        toast.error('Unauthorized');
+        return;
+      }
       toast.error('Something went wrong!!');
       return;
     }
@@ -192,10 +198,10 @@ export async function getServerSideProps({ params: { id }, req }) {
   const res = await fetch(`${API_URL}/events/${id}`);
   const evt = await res.json();
 
-  console.log(req.headers.cookie);
+  const { token } = parseCookie(req);
 
   return {
-    props: { evt },
+    props: { evt, token },
   };
 }
 
