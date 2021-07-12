@@ -1,9 +1,10 @@
 
 
+
 # DJ-NEXT
 Web App written in Next.js for hosting and managing parties / events
 
-## Live Demo
+## Live Demo ✨
 [DJ Events | Find the hottest parties.](https://djnextfrontendsj.vercel.app/)
 
 ## Technologies Used
@@ -12,7 +13,7 @@ Web App written in Next.js for hosting and managing parties / events
 3. [Cloudinary](https://cloudinary.com/) - to create, manage and deliver image / video content
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started 👩‍💻
 
 1. Clone [this repository](https://github.com/shivamjjha/dj-next.git): `git clone https://github.com/shivamjjha/dj-next.git`
 2. cd into project: `cd dj-next`
@@ -20,11 +21,11 @@ Web App written in Next.js for hosting and managing parties / events
 4. Run backend server (after cd into backend): `npm run dev`
 5. Run frontend server (after cd into frontend): `npm run dev` 
 
-### Prerequisites
+### Prerequisites 🧵
 
 1. [Node.js](https://nodejs.dev/)
 
-### API KEYS
+### API KEYS 🗝
 These two are if you want to see mas in your local dev env:
 1. [Mapbox API KEY](https://www.mapbox.com/)
 2. [Google Maps API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
@@ -36,23 +37,20 @@ If you want to add images for separate events:( For image upload and resizing fa
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage 📝
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+https://user-images.githubusercontent.com/44032634/125367010-f4672f00-e394-11eb-9b9d-b5c137bb9ff4.mp4
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap 🛣
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
+See the 🐛 [open issues](https://github.com/shivamjjha/dj-next/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contributing 👋
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -63,23 +61,21 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 <!-- LICENSE -->
-## License
+## License ⚖
 
 Distributed under the MIT License. See [`LICENSE`](https://github.com/shivamjjha/dj-next/blob/master/LICENSE) for more information.
 
 
 <!-- CONTACT -->
-## Contact
+## Contact 🤙
 
 [@shivamjjha](https://twitter.com/shivamjjha) - http://bit.ly/ShivamJha
 
-
-Project Link: [https://github.com/shivamjjha/dj-next](https://github.com/shivamjjha/dj-next)
-
+Project Link: https://github.com/shivamjjha/dj-next
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+## Acknowledgements 🙏
 * [react-geocode](https://github.com/shukerullah/react-geocode#readme)
 *  [react-map-gl](https://github.com/visgl/react-map-gl#readme) 
 * [react-toastify](https://github.com/fkhadra/react-toastify#readme)
