@@ -5,6 +5,10 @@ import parseCookie from '@/helpers/index';
 import styles from '@/styles/Dashboard.module.css';
 
 const DashboardPage = ({ events }) => {
+  const deleteEvent = id => {
+    console.log(id);
+  };
+
   return (
     <Layout title='User Dashboard'>
       <div className={styles.dash}>
@@ -12,7 +16,7 @@ const DashboardPage = ({ events }) => {
         <h3>My Events</h3>
 
         {events.map(evt => (
-          <DashboardEvent key={evt.id} evt={evt} />
+          <DashboardEvent key={evt.id} evt={evt} handleDelete={deleteEvent} />
         ))}
       </div>
     </Layout>
