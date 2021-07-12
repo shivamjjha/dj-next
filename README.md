@@ -7,7 +7,7 @@ Web App written in Next.js for hosting and managing parties / events
 ## Live Demo ✨
 [DJ Events | Find the hottest parties.](https://djnextfrontendsj.vercel.app/)
 
-## Technologies Used
+## Technologies Used ⚙
 1. [Next JS](https://nextjs.org/) - The [React](https://reactjs.org/)  Framework for  Production
 2. [Strapi](https://strapi.io/) - Open source Node.js Headless CMS
 3. [Cloudinary](https://cloudinary.com/) - to create, manage and deliver image / video content
