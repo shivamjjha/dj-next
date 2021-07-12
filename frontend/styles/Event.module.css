@@ -9,6 +9,7 @@
 
 .event p {
   margin: 10px 0;
+  word-break: break-all;
 }
 
 .image {

@@ -6,8 +6,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { API_URL } from '@/config/index';
 import Layout from '@/components/Layout';
 import styles from '@/styles/Form.module.css';
+import parseCookie from '@/helpers/index';
 
-const Add = () => {
+const Add = ({ token }) => {
+  console.log(token);
   const [values, setValues] = useState({
     name: '',
     performers: '',
@@ -37,11 +39,16 @@ const Add = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error('No token included!');
+        return;
+      }
       toast.error('Something went wrong!!');
       return;
     }
@@ -148,3 +155,11 @@ const Add = () => {
 };
 
 export default Add;
+
+export const getServerSideProps = async ({ req }) => {
+  const { token } = parseCookie(req);
+
+  return {
+    props: { token },
+  };
+};
