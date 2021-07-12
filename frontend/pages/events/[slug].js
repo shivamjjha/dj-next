@@ -7,11 +7,12 @@ import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Event.module.css';
+import EventMap from '@/components/EventMap';
 
 const EventPage = ({ evt }) => {
   const router = useRouter();
 
-/*   const deleteEvent = async () => {
+  /*   const deleteEvent = async () => {
     if (confirm('Are you sure?')) {
       const res = await fetch(`${API_URL}/events/${evt.id}`, {
         method: 'DELETE',
@@ -69,6 +70,8 @@ const EventPage = ({ evt }) => {
         <p>{evt.description}</p>
         <h3>Venue: {evt.name}</h3>
         <p>{evt.address}</p>
+
+        <EventMap />
 
         <Link href='/events'>
           <a className={styles.back}>{'<'} Go Back</a>
