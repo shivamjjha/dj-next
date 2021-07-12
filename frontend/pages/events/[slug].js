@@ -11,7 +11,7 @@ import styles from '@/styles/Event.module.css';
 const EventPage = ({ evt }) => {
   const router = useRouter();
 
-  const deleteEvent = async () => {
+/*   const deleteEvent = async () => {
     if (confirm('Are you sure?')) {
       const res = await fetch(`${API_URL}/events/${evt.id}`, {
         method: 'DELETE',
@@ -26,7 +26,7 @@ const EventPage = ({ evt }) => {
 
       router.push('/events');
     }
-  };
+  }; */
 
   // If the dynamic page is not yet generated (the path was not there) (at build time), this will be displayed
   // initially until getStaticProps() finishes running
